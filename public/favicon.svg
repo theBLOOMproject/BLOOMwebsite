@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- BLOOM brandmark: central ring + 6 outer rings + 6 small dots -->
+  <!-- Central ring -->
+  <circle cx="32" cy="32" r="11" stroke="#E05A47" stroke-width="4.5" fill="none"/>
+  <!-- 6 outer rings (hexagonal arrangement) -->
+  <!-- Top -->
+  <circle cx="32" cy="10" r="5.5" stroke="#E05A47" stroke-width="3" fill="none"/>
+  <!-- Top-right -->
+  <circle cx="51" cy="21" r="5.5" stroke="#E05A47" stroke-width="3" fill="none"/>
+  <!-- Bottom-right -->
+  <circle cx="51" cy="43" r="5.5" stroke="#E05A47" stroke-width="3" fill="none"/>
+  <!-- Bottom -->
+  <circle cx="32" cy="54" r="5.5" stroke="#E05A47" stroke-width="3" fill="none"/>
+  <!-- Bottom-left -->
+  <circle cx="13" cy="43" r="5.5" stroke="#E05A47" stroke-width="3" fill="none"/>
+  <!-- Top-left -->
+  <circle cx="13" cy="21" r="5.5" stroke="#E05A47" stroke-width="3" fill="none"/>
+  <!-- 6 small filled dots between outer rings -->
+  <!-- Between top and top-right -->
+  <circle cx="43" cy="13" r="2" fill="#E05A47"/>
+  <!-- Between top-right and bottom-right -->
+  <circle cx="53" cy="32" r="2" fill="#E05A47"/>
+  <!-- Between bottom-right and bottom -->
+  <circle cx="43" cy="51" r="2" fill="#E05A47"/>
+  <!-- Between bottom and bottom-left -->
+  <circle cx="21" cy="51" r="2" fill="#E05A47"/>
+  <!-- Between bottom-left and top-left -->
+  <circle cx="11" cy="32" r="2" fill="#E05A47"/>
+  <!-- Between top-left and top -->
+  <circle cx="21" cy="13" r="2" fill="#E05A47"/>
+</svg>

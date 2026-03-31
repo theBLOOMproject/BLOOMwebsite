@@ -5,7 +5,6 @@ import WhatBloomIs from "./components/WhatBloomIs";
 import CivicOS from "./components/CivicOS";
 import HowItWorks from "./components/HowItWorks";
 import ConversationsOptionA from "./components/ConversationsOptionA";
-import TryConversation from "./components/TryConversation";
 import SmarterTogether from "./components/SmarterTogether";
 import ForCommunities from "./components/ForCommunities";
 import AIAlly from "./components/AIAlly";
@@ -20,7 +19,7 @@ import Footer from "./components/Footer";
  *
  * Section order:
  *   Hero → Moment → What BLOOM Is → CivicOS → How It Works → Active Conversations →
- *   Try a Conversation → Smarter Together → For Civic Hosts →
+ *   Smarter Together → For Civic Hosts →
  *   AI Ally → Federated → Not Another Platform → Team →
  *   Stay in the Loop → Footer
  */
@@ -35,7 +34,6 @@ export default function App() {
         <CivicOS />
         <HowItWorks />
         <ConversationsOptionA />
-        <TryConversation />
         <SmarterTogether />
         <ForCommunities />
         <AIAlly />
