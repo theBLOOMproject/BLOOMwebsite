@@ -1,5 +1,5 @@
 {
-  "heading": "The people who know a community best are already there.",
+  "heading": "Helping hosts do what they do best.",
   "intro": "BLOOM partners with locally rooted organizations, called Civic Hosts, that can bring neighbors together across difference to work through hard choices on AI and turn them into proposals decision makers can’t ignore. We bring the rest:",
   "items": [
     {
@@ -17,12 +17,11 @@
       "alt": "A facilitator organizing ideas on a wall of sticky notes at the Utah Solutions Forum"
     },
     {
-      "label": "CivicOS",
-      "title": "CivicOS",
-      "desc": "Our open-source civic infrastructure helps communities combine in-person and digital participation, engage hundreds or thousands of people, and see clearly where people agree, where they differ, and what matters most.",
+      "label": "Digital tools",
+      "title": "Digital tools",
+      "desc": "CivicOS, our open-source software, helps communities combine in-person and digital participation, engage hundreds or thousands of people, and see clearly where people agree, where they differ, and what matters most.",
       "image": "photos/forum-screens.jpg",
       "alt": "Delegates working at tables with laptops at the Utah Solutions Forum"
     }
-  ],
-  "networkLine": "No community goes it alone. Civic Hosts share what works, and their assemblies connect into the Public Assembly on AI."
+  ]
 }

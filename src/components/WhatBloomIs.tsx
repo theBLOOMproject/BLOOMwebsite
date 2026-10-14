@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Editable from "./Editable";
 import { Eyebrow } from "./ui";
 import content from "../content/whatBloomIs.json";
-import { pageHref, assetHref } from "../utils/href";
+import { assetHref } from "../utils/href";
 
 const FILE = "whatBloomIs.json";
 
@@ -85,18 +85,6 @@ export default function WhatBloomIs() {
               />
             </div>
           ))}
-
-          <div className="rounded-2xl border border-blush-200 p-7">
-            <p className="font-display text-2xl leading-snug text-maroon-900">
-              <Editable file={FILE} path="networkLine">{content.networkLine}</Editable>
-            </p>
-            <a
-              href={pageHref("cohort")}
-              className="mt-4 inline-flex items-center gap-2 text-sm text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
-            >
-              See how the network grows from communities to the country &rarr;
-            </a>
-          </div>
         </div>
       </div>
     </section>

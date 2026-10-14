@@ -1,10 +1,10 @@
 /**
  * The Work: case studies beside an interactive map of the western states.
- * Click or tap Oregon / Utah (or their label chips) to swap the detail card. No hover switching:
+ * Click or tap Oregon / Utah (or their label chips) on the map to swap the detail card. No hover switching:
  * scrolling the map under a resting cursor would otherwise change the card unasked.
  */
 import { useState } from "react";
-import { OREGON_ASSEMBLY, UTAH_FORUM } from "../content/terms";
+import { HOSTS, INSTITUTION, UTAH_FORUM } from "../content/terms";
 import { Eyebrow, Heading, Pill } from "./ui";
 import { US_STATES, MAP_WIDTH, MAP_HEIGHT, MAP_FULL_WIDTH } from "../content/usStates";
 
@@ -14,177 +14,41 @@ const FADE = `linear-gradient(to right, #000 ${FADE_START}%, rgba(0,0,0,0.35) ${
 import { pageHref, assetHref } from "../utils/href";
 
 const UTAH_REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
-const UTAH_FORUM_URL = "https://forum.utahcommonground.org/";
 const OREGON_REPORT_URL = "https://report.bloomproject.us/central-oregon-ai/";
+const COCAP_URL = "https://cocap.us/";
 
 type SiteId = "UT" | "OR";
 
-/* From the Utah Solutions Forum preliminary report (Sept. 25, 2026), with delegate support */
-const UTAH_RECOMMENDATIONS: { area: string; items: [string, number][] }[] = [
-  {
-    area: "Helping residents find information and take part",
-    items: [
-      ["A dedicated statewide AI information hub", 95],
-      ["A centralized citizen engagement portal", 84],
-      ["AI literacy programs through community libraries", 95],
-      ["A public awareness campaign pointing people to these resources", 82],
-    ],
-  },
-  {
-    area: "Opening up decisions about data centers",
-    items: [
-      ["Hyperscale data centers voted on by city councils and county commissions", 89],
-      ["State permits and independent environmental and economic impact analyses", 92],
-      ["Consistent statewide standards for data centers and public AI tools", 92],
-    ],
-  },
-  {
-    area: "Strengthening accountability",
-    items: [
-      ["Recusal for public officials with a conflict of interest", 92],
-      ["Limits on nondisclosure agreements that shield public interest or safety", 95],
-      ["An AI consumer complaint and transparency initiative", 97],
-    ],
-  },
-];
-
-function UtahRecommendations() {
-  return (
-    <details className="group rounded-xl bg-blush-50 px-5 py-4">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-medium text-maroon-900 marker:hidden">
-        See all 10 recommendations
-        <span aria-hidden="true" className="text-bloom-500 transition-transform group-open:rotate-45">+</span>
-      </summary>
-      <div className="mt-4 space-y-5">
-        {UTAH_RECOMMENDATIONS.map(({ area, items }) => (
-          <div key={area}>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-bloom-500">{area}</p>
-            <ul className="mt-2 space-y-2">
-              {items.map(([text, pct]) => (
-                <li key={text} className="flex items-baseline justify-between gap-4 text-sm">
-                  <span>{text}</span>
-                  <span className="shrink-0 font-display text-base text-bloom-600">{pct}%</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-        <p className="border-t border-blush-200 pt-3 text-sm">
-          92% of delegates supported the final package as a whole.
-        </p>
-      </div>
-    </details>
-  );
-}
-
-const SITES: Record<SiteId, { place: string; chip: string; title: string; host: { name: string; url: string } }> = {
+const SITES: Record<SiteId, { place: string; chip: string; title: string }> = {
   UT: {
     place: "Utah",
     chip: "10 proposals, 80%+ support",
-    title: "From conversation to public judgment",
-    host: { name: "Utah Common Ground", url: "https://www.utahcommonground.org/" },
+    title: "From 600+ Utahns in conversation to 10 policy recommendations.",
   },
   OR: {
     place: "Central Oregon",
     chip: "Assembly December 5\u20136",
-    title: "Building public capacity from the ground up",
-    host: { name: "the Central Oregon Civic Action Project (COCAP)", url: "https://cocap.us/" },
+    title: "Three counties working through what AI means for Central Oregon.",
   },
 };
-
-function UtahDetail() {
-  return (
-    <>
-      <p className="font-medium text-maroon-900">
-        A coalition of Utah organizations engaged more than 600 Utahns in conversations about AI and developed 10
-        policy recommendations through a 38-person assembly, the {UTAH_FORUM}.
-      </p>
-      <p>
-        Working with Utah Common Ground, BLOOM helped build a process that moved from community conversations to a
-        representative assembly.
-      </p>
-      <p>
-        Residents explored questions about AI in schools, work, data centers, transparency, and public participation.
-      </p>
-      <p>
-        Over two days at the{" "}
-        {UTAH_FORUM_URL ? (
-          <a href={UTAH_FORUM_URL} target="_blank" rel="noopener noreferrer" className="text-bloom-600 underline decoration-bloom-300 underline-offset-4">
-            {UTAH_FORUM}
-          </a>
-        ) : (
-          UTAH_FORUM
-        )}
-        , 38 Utahns selected through civic lottery (a random, representative draw, much like a jury) heard evidence, considered competing perspectives, worked through
-        trade-offs, and developed proposals together.
-      </p>
-      <p className="font-medium text-maroon-900">
-        The result: 10 policy recommendations, each backed by at least 82% of delegates, from a group chosen to
-        reflect Utah&rsquo;s political makeup. 92% supported the full package.
-      </p>
-      <UtahRecommendations />
-      <figure className="border-l border-bloom-200 pl-4">
-        <blockquote className="font-display text-lg leading-snug text-bloom-500">
-          &ldquo;Did you think yesterday you might get to 90% on something? &hellip; This is a pretty extraordinary
-          accomplishment just in and of itself.&rdquo;
-        </blockquote>
-        <figcaption className="mt-2 text-xs text-maroon-900/60">&mdash; Paul Edwards, Wheatley Institute</figcaption>
-      </figure>
-    </>
-  );
-}
-
-function OregonDetail() {
-  return (
-    <>
-      <p className="font-medium text-maroon-900">
-        Across Deschutes, Crook, and Jefferson counties, local organizations are engaging residents through digital
-        participation, community conversations, and representative deliberation around the AI choices reaching
-        Central Oregon.
-      </p>
-      <p>
-        The process culminates in the {OREGON_ASSEMBLY}, a representative assembly that leaves behind something more
-        important: local organizations and residents with greater capacity to work through future public problems
-        together.
-      </p>
-      <p className="font-medium text-maroon-900">The {OREGON_ASSEMBLY} takes place December 5&ndash;6, 2026.</p>
-    </>
-  );
-}
 
 export default function CaseStudies() {
   const [active, setActive] = useState<SiteId>("UT");
   const site = SITES[active];
 
   return (
-    <section id="work" className="relative overflow-x-clip bg-cream py-24 md:py-32">
+    <section id="work" className="relative overflow-x-clip bg-cream pb-24 pt-14 md:pb-32 md:pt-16">
       <div className="mx-auto grid max-w-7xl items-start gap-12 px-5 lg:grid-cols-12 lg:px-10">
         {/* Left: heading + swapping card */}
         <div className="lg:col-span-6">
           <Eyebrow>Where we work</Eyebrow>
-          <Heading className="mt-5 text-4xl sm:text-5xl">Explore what communities have built.</Heading>
+          <Heading className="mt-5 text-4xl sm:text-5xl">Explore what our community partners are building.</Heading>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-maroon-900/80">
             Local partners run the process. BLOOM brings the funding, methods and tools. Here&rsquo;s where it&rsquo;s
             happening so far.
           </p>
 
-          <div className="mt-6 flex gap-2" role="tablist" aria-label="Case studies">
-            {(Object.keys(SITES) as SiteId[]).map((id) => (
-              <button
-                key={id}
-                role="tab"
-                aria-selected={active === id}
-                onClick={() => setActive(id)}
-                className={`rounded-full px-4 py-1.5 text-sm transition-colors ${
-                  active === id ? "bg-bloom-500 text-white" : "bg-blush-100 text-bloom-600 hover:bg-blush-200"
-                }`}
-              >
-                {SITES[id].place}
-              </button>
-            ))}
-          </div>
-
-          <article key={active} role="tabpanel" className="mt-6 animate-[fadeIn_.35s_ease] overflow-hidden rounded-2xl bg-white shadow-soft">
+          <article key={active} aria-live="polite" className="mt-8 animate-[fadeIn_.35s_ease] overflow-hidden rounded-2xl bg-white shadow-soft">
             {active === "UT" && (
               <img
                 src={assetHref("photos/utah-forum-group.jpg")}
@@ -196,9 +60,6 @@ export default function CaseStudies() {
             <div className="p-7 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">{site.place}</p>
             <h3 className="mt-2 font-display text-2xl text-maroon-900">{site.title}</h3>
-            <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
-              {active === "UT" ? <UtahDetail /> : <OregonDetail />}
-            </div>
             <div className="mt-7 flex flex-wrap gap-3">
               {active === "UT" ? (
                 <>
@@ -208,22 +69,24 @@ export default function CaseStudies() {
               ) : (
                 <>
                   <Pill href={OREGON_REPORT_URL} external>Read the report</Pill>
-                  <Pill href="https://oregon.bloomproject.us/landing?host=true" external variant="soft">
-                    Explore Central Oregon
-                  </Pill>
+                  <Pill href={COCAP_URL} external variant="soft">Visit the COCAP website</Pill>
                 </>
               )}
             </div>
-            <div className="mt-5">
-              <p className="text-xs text-maroon-900/60">
-                Hosted by{" "}
-                <a href={site.host.url} target="_blank" rel="noopener noreferrer" className="underline decoration-bloom-300 underline-offset-2 hover:text-bloom-600">
-                  {site.host.name}
-                </a>
-              </p>
-            </div>
             </div>
           </article>
+
+          <div className="mt-8 rounded-2xl border border-blush-200 p-7">
+            <p className="font-display text-2xl leading-snug text-maroon-900">
+              No community goes it alone. {HOSTS} share what works, and their assemblies connect into the {INSTITUTION}.
+            </p>
+            <a
+              href={pageHref("cohort")}
+              className="mt-4 inline-flex items-center gap-2 text-sm text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+            >
+              See how the network grows from communities to the country &rarr;
+            </a>
+          </div>
         </div>
 
         {/* Right: the map. Starts level with the tabs, then stays in view while the card scrolls past. */}
@@ -283,7 +146,7 @@ export default function CaseStudies() {
                   top: `${((s.cy - (id === "OR" ? 20 : 0)) / MAP_HEIGHT) * 100}%`,
                 }}
               >
-                <span className="block text-sm font-medium">{SITES[id].place}</span>
+                <span className="block font-display text-2xl font-medium leading-tight">{SITES[id].place}</span>
                 <span className={`block text-[10px] uppercase tracking-wider ${isActive ? "text-bloom-200" : "text-bloom-500"}`}>
                   {SITES[id].chip}
                 </span>

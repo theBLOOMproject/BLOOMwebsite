@@ -4,7 +4,7 @@
  * Edges line up with the header; height follows the content.
  */
 import { sectionHref, assetHref } from "../utils/href";
-import { INSTITUTION, NATIONAL_GOAL } from "../content/terms";
+import { INSTITUTION } from "../content/terms";
 import { FormLink } from "./CohortForm";
 import { CLOSES_LABEL, rfpStatus } from "../content/rfp";
 import { Glow, Pill } from "./ui";
@@ -46,12 +46,9 @@ export default function Hero() {
 
           <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-5 lg:col-start-8">
             <p>
-              BLOOM is building <strong className="font-semibold">the {INSTITUTION}</strong>: a growing network of
-              in-person and online assemblies where neighbors make sense of the challenges they face and{" "}
-              <em className="text-bloom-500">develop proposals decision makers can&rsquo;t ignore.</em>
-            </p>
-            <p className="mt-4">
-              Each is designed and led by the community it serves, building toward {NATIONAL_GOAL}.
+              BLOOM is building <strong className="font-semibold">the {INSTITUTION}</strong>: a federation of
+              community-led assemblies across the United States, equipping people to decide together what they want
+              their shared future to be.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Pill href={sectionHref("work")}>See the results from Utah</Pill>

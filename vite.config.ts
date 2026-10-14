@@ -71,6 +71,7 @@ export default defineConfig({
         cohort: path.resolve(__dirname, "cohort/index.html"),
         people: path.resolve(__dirname, "people/index.html"),
         updates: path.resolve(__dirname, "updates/index.html"),
+        "how-we-work": path.resolve(__dirname, "how-we-work/index.html"),
       },
     },
   },

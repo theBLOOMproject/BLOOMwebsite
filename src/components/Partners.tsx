@@ -2,26 +2,28 @@
  * Partners: logo wall on the homepage.
  *
  * To add a logo: put the file in public/partners/ and set `logo` below. Partners without one show their name.
+ * Each partner links to its website via `url`. Still to confirm: AEGIX, Engage Forum, Child First Policy Center,
+ * Oregon's Kitchen Table and CrownShy (shown unlinked until a URL is set).
  */
 import { useState } from "react";
 import { Eyebrow } from "./ui";
 import { INSTITUTION } from "../content/terms";
 import { assetHref } from "../utils/href";
 
-const PARTNERS: { name: string; logo?: string }[] = [
-  { name: "Utah Common Ground", logo: "partners/utah-common-ground.png" },
-  { name: "Mormon Women for Ethical Government", logo: "partners/mweg.png" }, // small source (157px); swap for a larger file when available
-  { name: "Central Oregon Civic Action Project (COCAP)", logo: "partners/cocap.png" },
-  { name: "Braver Angels", logo: "partners/braver-angels.png" },
+const PARTNERS: { name: string; url?: string; logo?: string }[] = [
+  { name: "Utah Common Ground", url: "https://www.utahcommonground.org/", logo: "partners/utah-common-ground.png" },
+  { name: "Mormon Women for Ethical Government", url: "https://www.mormonwomenforethicalgovernment.org/", logo: "partners/mweg.png" }, // small source (157px); swap for a larger file when available
+  { name: "Central Oregon Civic Action Project (COCAP)", url: "https://cocap.us/", logo: "partners/cocap.png" },
+  { name: "Braver Angels", url: "https://braverangels.org/", logo: "partners/braver-angels.png" },
   { name: "AEGIX AI Ethics & Governance Institute", logo: "partners/aegix.png" },
-  { name: "Center for Anticipatory Intelligence, Utah State University", logo: "partners/center-anticipatory-intelligence.png" },
+  { name: "Center for Anticipatory Intelligence, Utah State University", url: "https://www.usu.edu/cai/", logo: "partners/center-anticipatory-intelligence.png" },
   { name: "Engage Forum", logo: "partners/engage-forum.png" },
   { name: "Child First Policy Center", logo: "partners/child-first-policy-center.png" },
   { name: "Oregon\u2019s Kitchen Table", logo: "partners/oregons-kitchen-table.png" },
-  { name: "Central Oregon Community College", logo: "partners/central-oregon-community-college.png" },
-  { name: "Central Oregon Intergovernmental Council", logo: "partners/coic.png" },
-  { name: "Citizens4Community", logo: "partners/citizens4community.png" },
-  { name: "Metagov", logo: "partners/metagov.png" },
+  { name: "Central Oregon Community College", url: "https://www.cocc.edu/", logo: "partners/central-oregon-community-college.png" },
+  { name: "Central Oregon Intergovernmental Council", url: "https://coic.org/", logo: "partners/coic.png" },
+  { name: "Citizens4Community", url: "https://citizens4community.com/", logo: "partners/citizens4community.png" },
+  { name: "Metagov", url: "https://metagov.org/", logo: "partners/metagov.png" },
   { name: "CrownShy", logo: "partners/crownshy.png" },
 ];
 
@@ -68,15 +70,30 @@ export default function Partners() {
         </div>
 
         <ul className="mt-16 flex flex-wrap justify-center gap-y-14 border-t border-blush-200 pt-14">
-          {PARTNERS.map(({ name, logo }) => (
-            <li key={name} className="flex h-24 basis-1/2 items-center justify-center px-4 text-center sm:basis-1/3 lg:basis-1/4">
-              {logo ? (
-                <Logo src={logo} name={name} />
-              ) : (
-                <span className="max-w-[14rem] font-display text-lg leading-snug text-maroon-900/80">{name}</span>
-              )}
-            </li>
-          ))}
+          {PARTNERS.map(({ name, url, logo }) => {
+            const mark = logo ? (
+              <Logo src={logo} name={name} />
+            ) : (
+              <span className="max-w-[14rem] font-display text-lg leading-snug text-maroon-900/80">{name}</span>
+            );
+            return (
+              <li key={name} className="flex h-24 basis-1/2 items-center justify-center px-4 text-center sm:basis-1/3 lg:basis-1/4">
+                {url ? (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${name} (opens in a new tab)`}
+                    className="flex items-center justify-center rounded-lg transition-opacity hover:opacity-75"
+                  >
+                    {mark}
+                  </a>
+                ) : (
+                  mark
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         <p className="mt-16 text-center font-display text-xl text-maroon-900 sm:text-2xl">
