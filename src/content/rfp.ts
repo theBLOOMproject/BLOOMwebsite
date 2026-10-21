@@ -14,6 +14,9 @@ export const APPLY_EMBED_URL = "https://airtable.com/embed/appWfFclW2rKc7Ot1/pag
 
 export const CONTACT_EMAIL = "hello@bloom-project.org";
 
+/** Substack post announcing the call. Linked under the cohort page intro. */
+export const ANNOUNCEMENT_URL = "https://bloomproject.substack.com/p/introducing-the-public-assembly-on";
+
 /**
  * The Call for Civic Hosts (CFP) as a PDF in public/. The download link shows once this is set and
  * applications have opened. The old address (rfp/founding-civic-hosts-rfp.pdf) is kept as a copy of
