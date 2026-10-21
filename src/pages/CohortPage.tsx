@@ -9,7 +9,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
-import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, infoSessionWhen, previewEnabled, rfpStatus } from "../content/rfp";
+import { ANNOUNCEMENT_URL, APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, infoSessionWhen, previewEnabled, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
@@ -201,6 +201,17 @@ export default function CohortPage() {
           >
             {c.hero.intro}
           </E>
+          {ANNOUNCEMENT_URL && c.hero.announcementLabel && (
+            <a
+              href={ANNOUNCEMENT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+            >
+              {c.hero.announcementLabel}
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+            </a>
+          )}
           <p className="mt-8 text-sm font-semibold text-maroon-900">{statusLine}</p>
           <div className="mt-4 flex flex-wrap gap-3">
             <CohortCTA formAnchor={formAnchor} />
