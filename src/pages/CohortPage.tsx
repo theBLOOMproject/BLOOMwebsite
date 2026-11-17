@@ -9,7 +9,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
-import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, infoSessionWhen, previewEnabled, rfpStatus } from "../content/rfp";
+import { ANNOUNCEMENT_URL, APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, FAQ_URL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, infoSessionWhen, previewEnabled, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
@@ -183,6 +183,11 @@ export default function CohortPage() {
       {c.hero.pdfLabel}
     </Pill>
   );
+  const faqButton = FAQ_URL && (
+    <Pill href={FAQ_URL} external variant="soft" arrow={false}>
+      {c.hero.faqLabel}
+    </Pill>
+  );
 
   return (
     <main>
@@ -201,11 +206,30 @@ export default function CohortPage() {
           >
             {c.hero.intro}
           </E>
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+            {[
+              { href: ANNOUNCEMENT_URL, label: c.hero.announcementLabel },
+            ]
+              .filter((l) => l.href && l.label)
+              .map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 text-sm font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+                >
+                  {l.label}
+                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                </a>
+              ))}
+          </div>
           <p className="mt-8 text-sm font-semibold text-maroon-900">{statusLine}</p>
           <div className="mt-4 flex flex-wrap gap-3">
             <CohortCTA formAnchor={formAnchor} />
             {infoButton}
             {pdfButton}
+            {faqButton}
           </div>
           {showInfoSession && sessionWhen && (
             <p className="mt-3 text-sm text-maroon-900/75">
@@ -610,6 +634,17 @@ export default function CohortPage() {
                   </E>
                   {infoWhen}
                 </>
+              )}
+              {FAQ_URL && (
+                <a
+                  href={FAQ_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-4 inline-flex items-center gap-2 text-[15px] font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+                >
+                  {c.infoSession.faqLink}
+                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                </a>
               )}
               <p className="mt-4 text-[15px] text-maroon-900/80">
                 <E path="infoSession.emailPrompt">{c.infoSession.emailPrompt}</E>{" "}
