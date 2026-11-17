@@ -183,6 +183,11 @@ export default function CohortPage() {
       {c.hero.pdfLabel}
     </Pill>
   );
+  const faqButton = FAQ_URL && (
+    <Pill href={FAQ_URL} external variant="soft" arrow={false}>
+      {c.hero.faqLabel}
+    </Pill>
+  );
 
   return (
     <main>
@@ -204,7 +209,6 @@ export default function CohortPage() {
           <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
             {[
               { href: ANNOUNCEMENT_URL, label: c.hero.announcementLabel },
-              { href: FAQ_URL, label: c.hero.faqLabel },
             ]
               .filter((l) => l.href && l.label)
               .map((l) => (
@@ -225,6 +229,7 @@ export default function CohortPage() {
             <CohortCTA formAnchor={formAnchor} />
             {infoButton}
             {pdfButton}
+            {faqButton}
           </div>
           {showInfoSession && sessionWhen && (
             <p className="mt-3 text-sm text-maroon-900/75">
