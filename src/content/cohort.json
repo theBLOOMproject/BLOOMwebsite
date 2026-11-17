@@ -243,7 +243,7 @@
         "what": "Applications open"
       },
       {
-        "when": "Nov 20, 2026",
+        "when": "Nov 23, 2026",
         "what": "Applications close"
       },
       {
@@ -286,7 +286,7 @@
   },
   "applicationForm": {
     "heading": "Apply to be a Civic Host.",
-    "intro": "The application takes about an hour. Applications are due November 20, 2026.",
+    "intro": "The application takes about an hour. Applications are due Monday, November 23, 2026, at 9:00 AM PT.",
     "newTab": "Prefer a full page? Open the form in a new tab."
   }
 }

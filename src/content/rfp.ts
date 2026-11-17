@@ -28,11 +28,12 @@ export const RFP_PDF = "cfp/call-for-civic-hosts.pdf";
 
 /** Pacific time (Oct 15 is daylight time, UTC−7). Before OPENS the site shows "Get notified"; after CLOSES it says applications are closed. Applications open at 2:00 PM PT. */
 export const OPENS = new Date("2026-10-15T14:00:00-07:00");
-export const CLOSES = new Date("2026-11-20T23:59:59-08:00");
+/** Extended from Nov 20 to Monday, Nov 23, 9:00 AM PT (standard time, UTC−8). */
+export const CLOSES = new Date("2026-11-23T09:00:00-08:00");
 export const OPENS_LABEL = "October 15, 2026, at 2:00 PM PT";
 /** Used on the day applications open, e.g. "today, October 15, at 2:00 PM PT". */
 export const OPENS_TODAY_LABEL = "today, October 15, at 2:00 PM PT";
-export const CLOSES_LABEL = "November 20, 2026";
+export const CLOSES_LABEL = "Monday, November 23, at 9:00 AM PT";
 
 export type RfpStatus = "upcoming" | "open" | "closed";
 
